@@ -3,6 +3,10 @@ from flask import Flask, jsonify, render_template, request, send_file, url_for, 
 
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 @app.route('/control/<direction>', methods=['POST'])
 def control_car(direction):
 
@@ -13,4 +17,4 @@ def control_car(direction):
         return jsonify({'error': 'Something went wrong'}), 400
     
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5001)
