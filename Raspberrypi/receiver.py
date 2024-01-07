@@ -20,7 +20,8 @@ def get_direction():
 
     try:
         # Send a GET request to the cloud server
-        response = requests.get(f"{CLOUD_SERVER_URL}/getDirection")
+        url = CLOUD_SERVER_URL + "/getDirection"
+        response = requests.get(url)
         
         # Check if the request was successful (status code 200)
         if response.status_code == 200:
@@ -31,7 +32,8 @@ def get_direction():
             # Process the control directions (this is where you would move the car)
             move(direction)
     except:
-        print(f"Error getting info {response.status_code}")
+        msg = "Error getting info" + str(response.status_code)
+        print(msg)
     
 
 # if __name__ == "__main__":
