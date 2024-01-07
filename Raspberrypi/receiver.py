@@ -42,6 +42,12 @@ def move(new_direction):
 
         print(direction)
 
+        message = "Started moving: " + direction
+        if direction == "stop":
+            message = "Stopped moving"
+
+        # IF THERE'S AN ERROR WITH MOVEMENT, CHANGE MESSAGE TO "ERROR"
+
         if direction == "stop":
             pass
         elif direction == "forward":
@@ -60,17 +66,9 @@ def move(new_direction):
             pass
         elif direction == "backwardContinuous":
             pass
-
-        message = "Started moving: " + direction
-        if direction == "stop":
-            message = "Stopped moving"
         
         json = {"message": message}
-        # requests.post(CLOUD_SERVER_URL + "/control/" + direction, json=json) IDK but SEND 
-
-        
-    # include movement logistics here
-    
+        requests.post(CLOUD_SERVER_URL + "/status", json=json)
 
 # if __name__ == "__main__":
 

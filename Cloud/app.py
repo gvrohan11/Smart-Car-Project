@@ -31,6 +31,25 @@ def getDirection():
         return jsonify({"Direction" : cached_direction}), 200
     except:
         return "error", 400
+
+@app.route('/status', methods=['POST'])
+def status():
+    try:
+        # Get the JSON data from the request
+        json_data = request.get_json()
+
+        # Print the JSON data
+        print("Received JSON data:")
+        print(json_data)
+
+        # Perform any other processing as needed
+
+        return jsonify({'message': 'JSON data received successfully'}), 200
+
+    except Exception as e:
+        # Handle exceptions or errors
+        print(f"Error: {e}")
+        return jsonify({'error': 'Failed to process JSON data'}), 400
     
 
     
