@@ -2,7 +2,8 @@ import requests
 import time
 
 # Cloud server endpoint
-CLOUD_SERVER_URL = "something"
+# CLOUD_SERVER_URL = "something"
+CLOUD_SERVER_URL = 'http://3.145.61.84'
 
 response = []
 
@@ -11,9 +12,9 @@ direction = ""
 def move(direction):
     print(direction)
     # include movement logistics here
-    
 
-def send_request():
+
+def get_direction():
 
     global response, direction
 
@@ -31,9 +32,15 @@ def send_request():
             move(direction)
     except:
         print(f"Error getting info {response.status_code}")
+    
 
 # if __name__ == "__main__":
 
 while True:
-    send_request()
-    time.sleep(0.1)
+    try:
+        while True:
+            get_direction()
+            time.sleep(1)  # Increase sleep duration if needed
+    except KeyboardInterrupt:
+        print("Script interrupted by user.")
+        break

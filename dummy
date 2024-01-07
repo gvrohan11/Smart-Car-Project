@@ -25,12 +25,7 @@ def controlCar(direction):
 @app.route('/getDirection', methods=["GET"])
 def getDirection():
 
-    global cached_direction
-
-    try:
-        return jsonify({"Direction" : cached_direction}), 200
-    except:
-        return "error", 400
+    print("here")
     
 
     

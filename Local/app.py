@@ -3,8 +3,8 @@ from flask import Flask, jsonify, render_template, request, send_file, url_for, 
 
 app = Flask(__name__)
 
-CLOUD_SERVER_URL = 'http://18.222.254.41:5000'
-#CLOUD_SERVER_URL = 'http://172.31.37.114:5000'
+CLOUD_SERVER_URL = "http://3.145.61.84"
+
 # CLOUD_SERVER_URL = 'http://localhost:5001'
 
 @app.route('/')

@@ -1,0 +1,47 @@
+
+
+<style>
+    /* Additional styles for layout */
+    .btn-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .direction-btn {
+        width: 50px; /* Adjust x as needed */
+        height: 100px; /* Adjust 2y as needed */
+        margin: 5px; /* Adjust as needed */
+    }
+
+    .up-down-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stop-btn {
+        width: 150px; /* Adjust 3x as needed */
+        /* Height can be adjusted or left to content */
+        margin-top: 10px; /* Adjust as needed */
+    }
+</style>
+
+
+<div class="btn-container">
+    <!-- Left Button -->
+    <button class="btn btn-primary direction-btn" type="submit" name="direction" value="left">Left</button>
+
+    <!-- Up and Down Buttons -->
+    <div class="up-down-container">
+        <button class="btn btn-primary direction-btn" type="submit" name="direction" value="up">Up</button>
+        <button class="btn btn-primary direction-btn" type="submit" name="direction" value="down">Down</button>
+    </div>
+
+    <!-- Right Button -->
+    <button class="btn btn-primary direction-btn" type="submit" name="direction" value="right">Right</button>
+</div>
+
+<!-- Stop Button -->
+<button class="btn btn-danger stop-btn" type="submit" name="direction" value="stop">Stop</button>
