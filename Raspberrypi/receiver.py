@@ -43,6 +43,7 @@ def move(new_direction):
         print("Changed: " + direction)
 
         message = "Started moving: " + direction
+
         if direction == "stop":
             message = "Stopped moving"
 

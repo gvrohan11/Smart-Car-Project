@@ -40,7 +40,7 @@ def status():
 
         # Print the JSON data
         print("Received JSON data:")
-        print(json_data)
+        print(json_data["message"])
 
         # Perform any other processing as needed
 
