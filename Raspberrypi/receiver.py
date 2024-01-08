@@ -2,17 +2,16 @@ import requests
 import time
 
 # Cloud server endpoint
-# CLOUD_SERVER_URL = "something"
+
 CLOUD_SERVER_URL = 'http://3.145.61.84'
 
-response = []
+# CLOUD_SERVER_URL = 'http://localhost:5001'
 
 direction = ""
 
-
 def get_direction():
 
-    global response
+    response = []
 
     try:
         # Send a GET request to the cloud server
@@ -24,7 +23,6 @@ def get_direction():
             # Parse the response to get control directions
             json = response.json()
             new_direction = json["Direction"]
-            
             # Process the control directions (this is where you would move the car)
             move(new_direction)
     except:
@@ -35,12 +33,14 @@ def move(new_direction):
 
     global direction
 
-    # print(new_direction)
+    msg = "Moving: " + new_direction
+
+    print(msg)
 
     if new_direction != direction:
         direction = new_direction
 
-        print(direction)
+        print("Changed: " + direction)
 
         message = "Started moving: " + direction
         if direction == "stop":
