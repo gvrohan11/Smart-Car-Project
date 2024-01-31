@@ -1,5 +1,6 @@
 import requests
 import time
+from controls import *
 
 # Cloud server endpoint
 
@@ -53,13 +54,17 @@ def move(new_direction):
         if direction == "stop":
             message = "Stopped moving"
             print("a")
-            pass
+            stop()
         elif direction == "moveForward":
             print("b")
-            pass
+            robotForward()
+            sleep(2)
+            stop()
         elif direction == "moveBackward":
             print("c")
-            pass
+            robotBackward()
+            sleep(2)
+            stop()
         elif direction == "moveLeft":
             print("d")
             pass
