@@ -137,22 +137,27 @@ front_wheels = Robot(left=(23, 24), right=(16, 20))
 def robotForward():
     # front_wheels.left.forward()
     # front_wheels.right.forward()
+    print("forward function")
     front_wheels.forward()
 
 def robotBackward():
     # front_wheels.left.backward()
     # front_wheels.right.backward()
+    print("backward function")
     front_wheels.backward()
 
 def robotLeft():
     # front_wheels.left.backward()
     # front_wheels.right.forward()
+    print("left function")
     front_wheels.left()
 
 def robotRight():
     # front_wheels.left.forward()
     # front_wheels.right.backward()
+    print("right function")
     front_wheels.right()
 
 def stop():
+    print("stop function")
     front_wheels.stop()
