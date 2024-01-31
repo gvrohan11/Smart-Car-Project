@@ -54,26 +54,34 @@ def move(new_direction):
             message = "Stopped moving"
             print("a")
             pass
-        elif direction == "forward":
+        elif direction == "moveForward":
             print("b")
             pass
-        elif direction == "backward":
+        elif direction == "moveBackward":
             print("c")
             pass
-        elif direction == "left":
+        elif direction == "moveLeft":
             print("d")
             pass
-        elif direction == "right":
+        elif direction == "moveRight":
             print("e")
             pass
-        elif direction == "leftContinuous":
+        elif direction == "moveLeftContinuous":
             print("f")
             pass
-        elif direction == "rightContinuous":
+        elif direction == "moveRightContinuous":
             pass
-        elif direction == "forwardContinuous":
+        elif direction == "moveForwardContinuous":
             pass
-        elif direction == "backwardContinuous":
+        elif direction == "moveBackwardContinuous":
+            pass
+        elif direction == "turnLeft":
+            pass
+        elif direction == "turnRight":
+            pass
+        elif direction == "turnLeftContinuous":
+            pass
+        elif direction == "turnRightContinuous":
             pass
         
         json = {"message": message}
