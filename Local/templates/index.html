@@ -9,22 +9,65 @@
             integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
             crossorigin="anonymous"
         />
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+        <script>
+            const socket = io.connect('http://' + document.domain + ':' + location.port);
+
+            // When the page loads, fetch the initial status
+            document.addEventListener('DOMContentLoaded', function () {
+                updateStatus();
+            });
+
+            // Listen for status updates and update the HTML dynamically
+            socket.on('status_update', function (data) {
+                document.getElementById('currentlyMoving').innerText = data.status;
+            });
+
+            // Function to fetch the status from the server
+            function updateStatus() {
+                fetch('/get_status')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('currentlyMoving').innerText = data.status;
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            // Optional: Periodically update the status (adjust the interval as needed)
+            setInterval(updateStatus, 5000);
+        </script>
         <title>Controller Page</title>
     </head>
     <body>
         <div class="container">
-            <h2>Controller</h2>
+            <h1>Controller</h1>
             <form action="/direction" method="post">
-                <button class="btn btn-primary" type="submit" name="direction" value="left">Left</button>
-                <button class="btn btn-primary" type="submit" name="direction" value="right">Right</button>
-                <button class="btn btn-primary" type="submit" name="direction" value="forward">Forward</button>
-                <button class="btn btn-primary" type="submit" name="direction" value="backward">Backward</button>
-                <button class="btn btn-primary" type="submit" name="direction" value="leftContinuous">Left Continuous</button>
-                <button class="btn btn-primary" type="submit" name="direction" value="rightContinuous">Right Continuous</button>
-                <button class="btn btn-primary" type="submit" name="direction" value="forwardContinuous">Forward Continuous</button>
-                <button class="btn btn-primary" type="submit" name="direction" value="backwardContinuous">Backward Continuous</button>
+                <h4 class="heading">Discrete Movements:</h4>
+                <button class="btn btn-primary" type="submit" name="direction" value="moveLeft">Left</button>
+                <button class="btn btn-primary" type="submit" name="direction" value="moveRight">Right</button>
+                <button class="btn btn-primary" type="submit" name="direction" value="moveForward">Forward</button>
+                <button class="btn btn-primary" type="submit" name="direction" value="moveBackward">Backward</button>
+                <br>
+                <h4>Continuous Movements:</h4>
+                <button class="btn btn-primary" type="submit" name="direction" value="moveLeftContinuous">Left Continuous</button>
+                <button class="btn btn-primary" type="submit" name="direction" value="moveRightContinuous">Right Continuous</button>
+                <button class="btn btn-primary" type="submit" name="direction" value="moveForwardContinuous">Forward Continuous</button>
+                <button class="btn btn-primary" type="submit" name="direction" value="moveBackwardContinuous">Backward Continuous</button>
+                <br>
+                <h4>Discrete Turning</h4>
+                <button class="btn btn-primary" type="submit" name="direction" value="turnLeft">Turn Left</button>
+                <button class="btn btn-primary" type="submit" name="direction" value="turnRight">Turn Right</button>
+                <br>
+                <h4>Continuous Turning</h4>
+                <button class="btn btn-primary" type="submit" name="direction" value="turnLeftContinuous">Turn Left Continuous</button>
+                <button class="btn btn-primary" type="submit" name="direction" value="turnRightContinuous">Turn Right Continuous</button>
+                <h4>Stop:</h4>
                 <button class="btn btn-danger" type="submit" name="direction" value="stop">Stop</button>
             </form>
         </div>
+        <div id="currentlyMovingContainer">
+            <h4>Currently Moving: <span id="currentlyMoving">Waiting for data...</span></h4>
+        </div>        
     </body>
 </html>

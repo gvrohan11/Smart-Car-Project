@@ -5,10 +5,16 @@ app = Flask(__name__)
 
 cached_direction = ""
 
+currently_moving = ""
+
+#####################################################################################################################
+
 @app.route('/')
 def index():
     # return render_template('index.html')
     return "working"
+
+#####################################################################################################################
 
 @app.route('/control/<direction>', methods=['POST'])
 def controlCar(direction):
@@ -21,6 +27,8 @@ def controlCar(direction):
         return jsonify({'direction': direction}), 200
     except:
         return jsonify({'error': 'Something went wrong'}), 400
+    
+#####################################################################################################################
 
 @app.route('/getDirection', methods=["GET"])
 def getDirection():
@@ -32,17 +40,23 @@ def getDirection():
     except:
         return "error", 400
 
-@app.route('/status', methods=['POST'])
-def status():
+#####################################################################################################################
+
+@app.route('/status/<direction>', methods=['POST'])
+def status(direction):
+
+    global currently_moving
+
     try:
         # Get the JSON data from the request
         json_data = request.get_json()
-
         # Print the JSON data
         print("Received JSON data:")
         print(json_data["message"])
 
         # Perform any other processing as needed
+
+        currently_moving = direction
 
         return jsonify({'message': 'JSON data received successfully'}), 200
 
@@ -51,7 +65,19 @@ def status():
         print(f"Error: {e}")
         return jsonify({'error': 'Failed to process JSON data'}), 400
     
+#####################################################################################################################
+    
+@app.route('/getStatus', methods=["GET"])
+def getStatus():
 
+    global currently_moving
+
+    try:
+        return jsonify({"Status" : currently_moving}), 200
+    except:
+        return "error", 400
+    
+#####################################################################################################################
     
 if __name__ == '__main__':
     # app.run(host='0.0.0.0', port=5001, debug=True)

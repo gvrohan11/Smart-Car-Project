@@ -9,6 +9,8 @@ CLOUD_SERVER_URL = 'http://3.145.61.84'
 
 direction = ""
 
+#####################################################################################################################
+
 def get_direction():
 
     response = []
@@ -29,37 +31,43 @@ def get_direction():
         msg = "Error getting info" + str(response.status_code)
         print(msg)
 
+#####################################################################################################################
+
 def move(new_direction):
 
     global direction
 
-    msg = "Moving: " + new_direction
+    # msg = "Moving: " + new_direction
 
-    print(msg)
+    # print(msg)
 
     if new_direction != direction:
         direction = new_direction
 
-        print("Changed: " + direction)
+        print("Moving: " + direction)
 
         message = "Started moving: " + direction
-
-        if direction == "stop":
-            message = "Stopped moving"
 
         # IF THERE'S AN ERROR WITH MOVEMENT, CHANGE MESSAGE TO "ERROR"
 
         if direction == "stop":
+            message = "Stopped moving"
+            print("a")
             pass
         elif direction == "forward":
+            print("b")
             pass
         elif direction == "backward":
+            print("c")
             pass
         elif direction == "left":
+            print("d")
             pass
         elif direction == "right":
+            print("e")
             pass
         elif direction == "leftContinuous":
+            print("f")
             pass
         elif direction == "rightContinuous":
             pass
@@ -69,7 +77,9 @@ def move(new_direction):
             pass
         
         json = {"message": message}
-        requests.post(CLOUD_SERVER_URL + "/status", json=json)
+        requests.post(CLOUD_SERVER_URL + "/status/" + direction, json=json)
+
+#####################################################################################################################
 
 # if __name__ == "__main__":
 
