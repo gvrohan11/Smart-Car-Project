@@ -1,6 +1,5 @@
 import requests
-# from controls import *
-from gpiozero import Robot
+from controls import *
 from time import sleep
 
 # Cloud server endpoint
@@ -10,27 +9,6 @@ CLOUD_SERVER_URL = 'http://3.145.61.84'
 # CLOUD_SERVER_URL = 'http://localhost:5001'
 
 direction = ""
-
-front_wheels = Robot(left=(23, 24), right=(16, 20))
-
-# 23, 24 - left
-# 16, 20 - right
-
-'''
-
-USING MECCANUM WHEELS
-
-Left:
-
-TL down, TR up
-BL up, BR down
-
-Right:
-
-TL up, TR down
-BL down, BR up
-
-'''
 
 
 #####################################################################################################################
@@ -76,31 +54,23 @@ def move(new_direction):
 
         if direction == "stop":
             message = "Stopped moving"
-            front_wheels.stop()
+            stop()
         elif direction == "moveForward":
-            front_wheels.forward()
-            sleep(2)
-            front_wheels.stop()
+            forward()
         elif direction == "moveBackward":
-            front_wheels.backward()
-            sleep(2)
-            front_wheels.stop()
+            backward()
         elif direction == "moveLeft":
-            front_wheels.left()
-            sleep(2)
-            front_wheels.stop()
+            left()
         elif direction == "moveRight":
-            front_wheels.right()
-            sleep(2)
-            front_wheels.stop()
+            right()
         elif direction == "moveLeftContinuous":
-            front_wheels.left()
+            move_left_continuous()
         elif direction == "moveRightContinuous":
-            front_wheels.right()
+            move_left_continuous()
         elif direction == "moveForwardContinuous":
-            front_wheels.forward()
+            move_forward_continuous()
         elif direction == "moveBackwardContinuous":
-            front_wheels.backward()
+            move_backward_continuous()
         elif direction == "turnLeft":
             pass
         elif direction == "turnRight":
