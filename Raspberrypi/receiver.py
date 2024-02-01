@@ -12,6 +12,28 @@ CLOUD_SERVER_URL = 'http://3.145.61.84'
 
 direction = ""
 
+front_wheels = Robot(left=(23, 24), right=(16, 20))
+
+# 23, 24 - left
+# 16, 20 - right
+
+'''
+
+USING MECCANUM WHEELS
+
+Left:
+
+TL down, TR up
+BL up, BR down
+
+Right:
+
+TL up, TR down
+BL down, BR up
+
+'''
+
+
 #####################################################################################################################
 
 def get_direction():
@@ -56,20 +78,22 @@ def move(new_direction):
         if direction == "stop":
             message = "Stopped moving"
             print("a")
-            stop()
+            front_wheels.stop()
         elif direction == "moveForward":
             print("b")
-            robotForward()
+            front_wheels.forward()
             sleep(2)
-            stop()
+            front_wheels.stop()
         elif direction == "moveBackward":
             print("c")
-            robotBackward()
+            front_wheels.backward()
             sleep(2)
-            stop()
+            front_wheels.stop()
         elif direction == "moveLeft":
             print("d")
-            pass
+            front_wheels.left()
+            sleep(2)
+            front_wheels.stop()
         elif direction == "moveRight":
             print("e")
             pass
@@ -102,7 +126,7 @@ while True:
     try:
         while True:
             get_direction()
-            time.sleep(1)  # Increase sleep duration if needed
+            time.sleep(5)  # Increase sleep duration if needed
     except KeyboardInterrupt:
         print("Script interrupted by user.")
         break
@@ -113,51 +137,3 @@ while True:
     
 
 
-# 23, 24 - left
-# 16, 20 - right
-
-'''
-
-USING MECCANUM WHEELS
-
-Left:
-
-TL down, TR up
-BL up, BR down
-
-Right:
-
-TL up, TR down
-BL down, BR up
-
-'''
-
-front_wheels = Robot(left=(23, 24), right=(16, 20))
-
-def robotForward():
-    # front_wheels.left.forward()
-    # front_wheels.right.forward()
-    print("forward function")
-    front_wheels.forward()
-
-def robotBackward():
-    # front_wheels.left.backward()
-    # front_wheels.right.backward()
-    print("backward function")
-    front_wheels.backward()
-
-def robotLeft():
-    # front_wheels.left.backward()
-    # front_wheels.right.forward()
-    print("left function")
-    front_wheels.left()
-
-def robotRight():
-    # front_wheels.left.forward()
-    # front_wheels.right.backward()
-    print("right function")
-    front_wheels.right()
-
-def stop():
-    print("stop function")
-    front_wheels.stop()
