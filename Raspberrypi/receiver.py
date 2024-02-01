@@ -72,13 +72,13 @@ def move(new_direction):
         elif direction == "moveBackwardContinuous":
             move_backward_continuous()
         elif direction == "turnLeft":
-            pass
+            turn_left()
         elif direction == "turnRight":
-            pass
+            turn_right()
         elif direction == "turnLeftContinuous":
-            pass
+            turn_left_continuous()
         elif direction == "turnRightContinuous":
-            pass
+            turn_right_continuous()
         
         json = {"message": message}
         requests.post(CLOUD_SERVER_URL + "/status/" + direction, json=json)
@@ -91,7 +91,7 @@ while True:
     try:
         while True:
             get_direction()
-            sleep(.5)  # Increase sleep duration if needed
+            sleep(.1)  # Increase sleep duration if needed
     except KeyboardInterrupt:
         print("Script interrupted by user.")
         break
