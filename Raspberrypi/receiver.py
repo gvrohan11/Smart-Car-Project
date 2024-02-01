@@ -94,8 +94,9 @@ def move(new_direction):
             sleep(2)
             front_wheels.stop()
         elif direction == "moveRight":
-            print("e")
-            pass
+            front_wheels.right()
+            sleep(2)
+            front_wheels.stop()
         elif direction == "moveLeftContinuous":
             print("f")
             pass
