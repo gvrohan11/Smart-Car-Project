@@ -3,7 +3,7 @@ from time import sleep
 
 robot = Robot(left=(23, 24), right=(16, 20))
 
-while True:
+for i in range(1):
     robot.forward()
     sleep(1)
     robot.right()
