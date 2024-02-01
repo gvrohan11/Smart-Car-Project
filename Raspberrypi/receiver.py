@@ -126,7 +126,7 @@ while True:
     try:
         while True:
             get_direction()
-            sleep(5)  # Increase sleep duration if needed
+            sleep(.5)  # Increase sleep duration if needed
     except KeyboardInterrupt:
         print("Script interrupted by user.")
         break
