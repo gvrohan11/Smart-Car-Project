@@ -76,20 +76,16 @@ def move(new_direction):
 
         if direction == "stop":
             message = "Stopped moving"
-            print("a")
             front_wheels.stop()
         elif direction == "moveForward":
-            print("b")
             front_wheels.forward()
             sleep(2)
             front_wheels.stop()
         elif direction == "moveBackward":
-            print("c")
             front_wheels.backward()
             sleep(2)
             front_wheels.stop()
         elif direction == "moveLeft":
-            print("d")
             front_wheels.left()
             sleep(2)
             front_wheels.stop()
@@ -98,14 +94,13 @@ def move(new_direction):
             sleep(2)
             front_wheels.stop()
         elif direction == "moveLeftContinuous":
-            print("f")
-            pass
+            front_wheels.left()
         elif direction == "moveRightContinuous":
-            pass
+            front_wheels.right()
         elif direction == "moveForwardContinuous":
-            pass
+            front_wheels.forward()
         elif direction == "moveBackwardContinuous":
-            pass
+            front_wheels.backward()
         elif direction == "turnLeft":
             pass
         elif direction == "turnRight":
