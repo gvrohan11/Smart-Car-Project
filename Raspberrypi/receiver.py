@@ -1,7 +1,6 @@
 import requests
-import time
 # from controls import *
-import gpiozero as Robot
+from gpiozero import Robot
 from time import sleep
 
 # Cloud server endpoint
