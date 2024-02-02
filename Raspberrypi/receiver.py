@@ -52,6 +52,8 @@ def move(new_direction):
 
         # IF THERE'S AN ERROR WITH MOVEMENT, CHANGE MESSAGE TO "ERROR"
 
+        # For the non-continuous movements - add a stop after it's done moving
+
         if direction == "stop":
             message = "Stopped moving"
             stop()
