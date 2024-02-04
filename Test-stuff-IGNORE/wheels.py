@@ -1,16 +1,23 @@
 from gpiozero import Robot
 from time import sleep
 
-robot = Robot(left=(23, 24), right=(16, 20))
+front = Robot(left=(23, 24), right=(16, 20))
+back = Robot(left=(2, 3), right=(4, 17))
+
 
 for i in range(1):
-    robot.forward()
+    front.forward()
+    back.forward()
     sleep(1)
-    robot.right()
+    front.right()
+    back.right()
     sleep(1)
-    robot.backward()
+    front.backward()
+    back.backward()
     sleep(1)
-    robot.left()
+    front.left()
+    back.left()
     sleep(1)
-    robot.stop()
+    front.stop()
+    back.stop()
     sleep(1)
