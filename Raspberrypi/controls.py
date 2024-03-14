@@ -1,9 +1,9 @@
 from gpiozero import Robot
 from time import sleep
 
-front_wheels = Robot(left=(23, 24), right=(16, 20))
+front_wheels = Robot(left=(2, 3), right=(4, 17))
 # back_wheels = Robot(left=(), right=())
-back_wheels = Robot(left=(2, 3), right=(4, 17))
+back_wheels = Robot(left=(23, 24), right=(16, 20))
 '''
 
 FRONT WHEELS
