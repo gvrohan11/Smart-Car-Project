@@ -101,11 +101,11 @@ def turn_right():
 
 def turn_left_continuous():
     front_wheels.left()
-    # back_wheels.left()
+    back_wheels.left()
 
 def turn_right_continuous():
     front_wheels.right()
-    # back_wheels.right()
+    back_wheels.right()
 
 
 
