@@ -32,7 +32,7 @@ def get_direction():
             # Process the control directions (this is where you would move the car)
             move(new_direction)
     except:
-        msg = "Error getting info" + str(response.status_code)
+        msg = "Error getting info: " + str(response.status_code)
         print(msg)
 
 #####################################################################################################################
