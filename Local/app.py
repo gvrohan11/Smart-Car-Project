@@ -9,7 +9,8 @@ socketio = SocketIO(app)
 
 #####################################################################################################################
 
-CLOUD_SERVER_URL = "http://3.145.61.84"
+# CLOUD_SERVER_URL = "http://3.145.61.84"
+CLOUD_SERVER_URL = "http://52.14.59.214/"
 
 # CLOUD_SERVER_URL = 'http://localhost:5001'
 
