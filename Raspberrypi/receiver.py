@@ -71,7 +71,7 @@ def move(new_direction):
         elif direction == "moveLeftContinuous":
             move_left_continuous()
         elif direction == "moveRightContinuous":
-            move_left_continuous()
+            move_right_continuous()
         elif direction == "moveForwardContinuous":
             move_forward_continuous()
         elif direction == "moveBackwardContinuous":
