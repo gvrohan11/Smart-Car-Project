@@ -1,5 +1,7 @@
 #import requests
 from flask import Flask, jsonify, render_template, request, send_file, url_for, redirect
+import requests
+import base64
 
 app = Flask(__name__)
 
@@ -13,6 +15,44 @@ currently_moving = ""
 def index():
     # return render_template('index.html')
     return "working"
+
+#####################################################################################################################
+
+@app.route('/ip_address', methods=['GET', 'POST'])
+def ip_address():
+    global ip
+    if request.method == 'POST':
+        try:
+            ip = request.form['ip']
+            return "updated ip to " + ip, 200
+        except:
+            return "Error with setting ip", 400
+    elif request.method == 'GET':
+        try: 
+            return ip, 200
+        except:
+            return "Unable to get IP", 400
+
+#####################################################################################################################
+        
+@app.route('/stream', methods=['GET', 'POST'])
+def handle_stream():
+    global html_content
+    global img_str
+    if request.method == 'POST':
+        
+        image = request.data
+        print("received stream image: ")
+        # Decode image data
+        # nparr = np.frombuffer(image_data, np.uint8)
+        # image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+
+        # _, buffer = cv2.imencode('.jpeg', image)
+        img_str = (base64.b64encode(image)).decode()
+
+        return render_template('stream.html', IMAGE_URI=img_str)
+    elif request.method == 'GET':
+        return render_template('stream.html', IMAGE_URI=img_str)
 
 #####################################################################################################################
 

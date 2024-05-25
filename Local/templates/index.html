@@ -11,7 +11,7 @@
         />
         <link rel="stylesheet" href="styles.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
-        <script>
+        <!-- <script>
             const socket = io.connect('http://' + document.domain + ':' + location.port);
 
             // When the page loads, fetch the initial status
@@ -36,12 +36,15 @@
 
             // Optional: Periodically update the status (adjust the interval as needed)
             setInterval(updateStatus, 5000);
-        </script>
+        </script> -->
         <title>Controller Page</title>
     </head>
     <body>
         <div class="container">
-            <h1>Controller</h1>
+            <h1>Rohan's Smart Car Controller</h1>
+            <h2>Live Stream</h2>
+            <img src="http://{{ ip }}/stream.mjpg" width="320" height="240"/>
+            <h2>Controller</h2>
             <form action="/direction" method="post">
                 <h4 class="heading">Discrete Movements:</h4>
                 <button class="btn btn-primary" type="submit" name="direction" value="moveLeft">Left</button>

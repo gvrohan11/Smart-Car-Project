@@ -12,6 +12,8 @@ socketio = SocketIO(app)
 # CLOUD_SERVER_URL = "http://3.145.61.84"
 CLOUD_SERVER_URL = "http://52.14.59.214/"
 
+RASPBERRY_PI_IP = ""
+
 # CLOUD_SERVER_URL = 'http://localhost:5001'
 
 # PUBLIC_IP = ""
@@ -67,7 +69,16 @@ def continuous_get_request():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    global RASPBERRY_PI_IP
+
+    try:
+        response = requests.get(CLOUD_SERVER_URL + '/ip_address')
+        # print(response.text)
+        RASPBERRY_PI_IP = response.text
+    except requests.ConnectionError as e:
+        print("ERROR GETTING IP: ", e)
+
+    return render_template('index.html', ip=RASPBERRY_PI_IP)
 
 #####################################################################################################################
 

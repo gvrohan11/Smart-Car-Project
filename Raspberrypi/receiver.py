@@ -3,6 +3,7 @@
 import requests
 from controls import *
 from time import sleep
+import socket
 
 # Cloud server endpoint
 
@@ -12,6 +13,22 @@ CLOUD_SERVER_URL = 'http://52.14.59.214/'
 # CLOUD_SERVER_URL = 'http://localhost:5001'
 
 direction = ""
+
+def get_ip_address():
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        ip_address = s.getsockname()[0]
+        s.close()
+        return ip_address
+    except Exception as e:
+        print("error: ", e)
+        return None
+
+print(get_ip_address())
+ip_json = {"ip" : get_ip_address()}
+url = CLOUD_SERVER_URL + "/ip_address"
+requests.post(url, data=ip_json)
 
 
 #####################################################################################################################
