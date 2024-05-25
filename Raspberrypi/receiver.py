@@ -1,7 +1,7 @@
-#!usr/bin/env python3
+
 
 import requests
-# from controls import *
+from controls import *
 from time import sleep
 
 # Cloud server endpoint
@@ -57,33 +57,33 @@ def move(new_direction):
 
         # For the non-continuous movements - add a stop after it's done moving
 
-        # if direction == "stop":
-        #     message = "Stopped moving"
-        #     stop()
-        # elif direction == "moveForward":
-        #     forward()
-        # elif direction == "moveBackward":
-        #     backward()
-        # elif direction == "moveLeft":
-        #     left()
-        # elif direction == "moveRight":
-        #     right()
-        # elif direction == "moveLeftContinuous":
-        #     move_left_continuous()
-        # elif direction == "moveRightContinuous":
-        #     move_right_continuous()
-        # elif direction == "moveForwardContinuous":
-        #     move_forward_continuous()
-        # elif direction == "moveBackwardContinuous":
-        #     move_backward_continuous()
-        # elif direction == "turnLeft":
-        #     turn_left()
-        # elif direction == "turnRight":
-        #     turn_right()
-        # elif direction == "turnLeftContinuous":
-        #     turn_left_continuous()
-        # elif direction == "turnRightContinuous":
-        #     turn_right_continuous()
+        if direction == "stop":
+            message = "Stopped moving"
+            stop()
+        elif direction == "moveForward":
+            forward()
+        elif direction == "moveBackward":
+            backward()
+        elif direction == "moveLeft":
+            left()
+        elif direction == "moveRight":
+            right()
+        elif direction == "moveLeftContinuous":
+            move_left_continuous()
+        elif direction == "moveRightContinuous":
+            move_left_continuous()
+        elif direction == "moveForwardContinuous":
+            move_forward_continuous()
+        elif direction == "moveBackwardContinuous":
+            move_backward_continuous()
+        elif direction == "turnLeft":
+            turn_left()
+        elif direction == "turnRight":
+            turn_right()
+        elif direction == "turnLeftContinuous":
+            turn_left_continuous()
+        elif direction == "turnRightContinuous":
+            turn_right_continuous()
         
         json = {"message": message}
         requests.post(CLOUD_SERVER_URL + "/status/" + direction, json=json)

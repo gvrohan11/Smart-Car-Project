@@ -107,5 +107,23 @@ def turn_right_continuous():
     front_wheels.right()
     back_wheels.right()
 
+'''
+print("executing")
 
+
+front_wheels.forward()
+front_wheels.stop()
+front_wheels.backward()
+front_wheels.stop()
+front_wheels.left()
+front_wheels.stop()
+front_wheels.right()
+front_wheels.stop()
+
+forward()
+backward()
+left()
+right()
+print("done")
+'''
 
