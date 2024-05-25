@@ -60,8 +60,8 @@ def continuous_get_request():
         sleep(.5)  # Adjust the sleep duration as needed
 
 # Start the continuous GET request in a separate thread
-continuous_get_thread = threading.Thread(target=continuous_get_request)
-continuous_get_thread.start()
+# continuous_get_thread = threading.Thread(target=continuous_get_request)
+# continuous_get_thread.start()
 
 #####################################################################################################################
 
