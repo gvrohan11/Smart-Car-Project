@@ -12,7 +12,7 @@ import io
 import base64
 import requests
 
-CLOUD_SERVER_URL = "http://50.16.3.112:5000"
+CLOUD_SERVER_URL = "http://52.14.59.214/"
 
 PAGE="""\
 <html>
@@ -79,6 +79,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                     '''
                     
                 try:
+                    print("Using stream actually")
                     response = requests.post(CLOUD_SERVER_URL + '/stream', data = content, headers={'Content-Type':'text/html'})
                 except Exception as e:
                     print("error sending stream")
