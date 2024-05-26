@@ -20,7 +20,7 @@ PAGE="""\
 </head>
 <body>
 <h1>PiCamera MJPEG Streaming Demo</h1>
-<img src="stream.mjpg" width="320" height="240" />
+<img src="stream.mjpg" width="640" height="480" />
 </body>
 </html>
 """
