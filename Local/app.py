@@ -73,7 +73,7 @@ def index():
 
     try:
         response = requests.get(CLOUD_SERVER_URL + '/ip_address')
-        # print(response.text)
+        print(response.text)
         RASPBERRY_PI_IP = response.text
     except requests.ConnectionError as e:
         print("ERROR GETTING IP: ", e)
