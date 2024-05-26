@@ -5,7 +5,6 @@ import socketserver
 from threading import Condition
 from http import server
        
-import cv2
 import picamera
 import numpy as np
 import io
