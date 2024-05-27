@@ -43,9 +43,9 @@
         <div class="container">
             <h1>Rohan's Smart Car Controller</h1>
             <h2>Live Stream</h2>
-            <img src="http://{{ ip }}/stream.mjpg" width="640" height="480"/>
+            <img src="http://{{ ip }}:8000/stream.mjpg" width="640" height="480"/>
             <h2>Controller</h2>
-            <form action="/direction" method="post">
+            <form id="directionForm" action="/direction" method="post">
                 <h4 class="heading">Discrete Movements:</h4>
                 <button class="btn btn-primary" type="submit" name="direction" value="moveLeft">Left</button>
                 <button class="btn btn-primary" type="submit" name="direction" value="moveRight">Right</button>
@@ -73,4 +73,27 @@
             <h4>Currently Moving: <span id="currentlyMoving">Waiting for data...</span></h4>
         </div>        
     </body>
+
+    <script>
+        document.getElementById('directionForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var direction = event.submitter.value;
+            // console.log('Moving camera ' + direction);
+
+            // Make an AJAX request to the server
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/direction', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('Request successful');
+                    } else {
+                        console.error('Error:', xhr.status);
+                    }
+                }
+            };
+            xhr.send('direction=' + direction);
+        });
+    </script>
 </html>
